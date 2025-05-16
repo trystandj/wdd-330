@@ -22,9 +22,9 @@ export default class ProductDetails {
 
     
 
-    addProductToCart(product) {
+    addProductToCart() {
         const cartItems = getLocalStorage("so-cart") || []; 
-        cartItems.push(product);
+        cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
     }
 
