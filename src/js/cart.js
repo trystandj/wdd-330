@@ -7,6 +7,8 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
+  const color = item.Colors && item.Colors.length > 0 ? item.Colors[0].ColorName : "No color info";
+
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
