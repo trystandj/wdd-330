@@ -1,9 +1,14 @@
 import { getLocalStorage } from "./utils.mjs";
+const cartElement = document.getElementById("cart-items")
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  if (getLocalStorage("so-cart")) {
+    const cartItems = getLocalStorage("so-cart") ? getLocalStorage("so-cart") : '';
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  } else {
+    cartElement.innerHTML = "Your cart is empty!"
+  }
 }
 
 function cartItemTemplate(item) {
