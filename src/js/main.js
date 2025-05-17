@@ -1,9 +1,11 @@
-import ProductList from "./ProductList.mjs";
 import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
+import getNumberOfItems from "./utils.mjs";
 
-const listElement = document.getElementById("product-list");
+const dataSource = new ProductData("tents");
 
-const data = new ProductData("tents");
-const list = new ProductList("tents", data, listElement);
+const element = document.querySelector(".product-list");
 
-list.init();
+const productList = new ProductList("Tents", dataSource, element);
+getNumberOfItems();
+productList.init();

@@ -1,5 +1,6 @@
 import { getLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
+import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
   if (getLocalStorage("so-cart")) {
@@ -33,3 +34,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+getNumberOfItems();
