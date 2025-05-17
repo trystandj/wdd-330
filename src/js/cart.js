@@ -1,21 +1,31 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
 import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
-  if (getLocalStorage("so-cart")) {
-    const cartItems = getLocalStorage("so-cart")
-      ? getLocalStorage("so-cart")
-      : "";
-    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  const cartItems = getLocalStorage("so-cart");
+
+  if (cartItems) {
+    const htmlItems = cartItems.map(item => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+    const removeButtons = document.querySelectorAll("#remove-button");
+    removeButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const productId = button.getAttribute("data-index");
+        removeProductFromCart(productId);
+      });
+    });
   } else {
+    const cartElement = document.querySelector(".product-list");
     cartElement.innerHTML = "Your cart is empty!";
   }
 }
 
-function cartItemTemplate(item) {
+
+function cartItemTemplate(item, index) {
   const newItem = `<li class="cart-card divider">
+  <button id="remove-button" data-index="${index}">&times;</button>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -31,6 +41,13 @@ function cartItemTemplate(item) {
 </li>`;
 
   return newItem;
+}
+
+function removeProductFromCart(index) {
+  const cartItems = getLocalStorage("so-cart") || [];
+  cartItems.splice(index, 1);
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
 }
 
 renderCartContents();
