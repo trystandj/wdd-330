@@ -132,5 +132,28 @@
     },
     "ListPrice": 69.99,
     "FinalPrice": 69.99
+  },
+  {
+    "Id": "440KL",
+    "NameWithoutBrand": "Late Start Tent - 1-Person, 3-Season",
+    "Name": "Kelty Late Start Tent - 1-Person, 3-Season",
+    "IsFamousBrand": false,
+    "Image": "kelty-Late-Start-Tent-1-Person-3-Season-SeaSprayPageantBlue.jpg",
+
+    "SizesAvailable": {},
+    "Colors": [
+      {
+        "ColorCode": "01",
+        "ColorName": "Sea/Blue"
+      }
+    ],
+    "DescriptionHtmlSimple": "<strong><a class=\"glossaryTermLink\" href=\"/closeouts~g~2312\" title=\"Closeouts: - Closeouts are items that may be last year's model or color. While closeout items are often offered at discounted prices, the products themselves are always high quality. Closeout items can include anything from shoes, underwear and apparel, to rugs, tents and outdoor equipment. Closeouts are often a high percentage off the retail price.\">Closeouts</a></strong>. We're not worried about our weekend getting off to a late start since the Kelty Late Start Tent sets up fast and easy, even in the dark. The high-vis Quick-Corners make it easy to slip in the aluminum poles, pitch our tent, and enjoy our campsite. This freestanding, double-wall tent features No-See-Um mesh for bug-proof star-gazing and waterproof rain fly that lets us enjoy nature, rain or shine.<a class=\"glossaryTermLink\" href=\"https://www.backcountry.com/kelty-late-start-tent-1-person-3-season\" title=\"https://www.backcountry.com/kelty-late-start-tent-1-person-3-season\"> Original Page </a>.",
+    "SuggestedRetailPrice": 89.99,
+    "Brand": {
+      "Id": "1111",
+      "Name": "Kelty"
+    },
+    "ListPrice": 104.96,
+    "FinalPrice": 104.96
   }
 ]
