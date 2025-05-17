@@ -7,4 +7,4 @@ const element = document.querySelector(".product-list");
 
 const prodList = new ProductList("Tents", dataSource, element);
 
-ProductList.init();
+prodList.init();

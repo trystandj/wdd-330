@@ -29,7 +29,7 @@ export function getParam(param) {
   return product;
 }
 
-export function renderListWithTemplate(templateFn, parentElement, list, position = "aferbegin", clear = false) {
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterBegin", clear = false) {
   const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
