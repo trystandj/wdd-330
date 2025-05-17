@@ -272,7 +272,6 @@ button#remove-button:hover {
   grid-area: price;
 }
 
-
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
