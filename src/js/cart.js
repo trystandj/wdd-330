@@ -16,6 +16,7 @@ function renderCartContents() {
         removeProductFromCart(productId);
       });
     });
+    getNumberOfItems();
   } else {
     const cartElement = document.querySelector(".product-list");
     cartElement.innerHTML = "Your cart is empty!";
