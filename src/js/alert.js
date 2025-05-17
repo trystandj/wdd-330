@@ -5,10 +5,10 @@ export default class Alert {
   }
 
   async loadAlerts() {
-      const response = await fetch(this.jsonUrl);
-      if (!response.ok) throw new Error("Failed to load alerts");
-      const alerts = await response.json();
-      if (alerts.length > 0) this.renderAlerts(alerts);
+    const response = await fetch(this.jsonUrl);
+    if (!response.ok) throw new Error("Failed to load alerts");
+    const alerts = await response.json();
+    if (alerts.length > 0) this.renderAlerts(alerts);
   }
 
   renderAlerts(alerts) {
