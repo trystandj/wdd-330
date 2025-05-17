@@ -3,8 +3,29 @@ const cartElement = document.getElementById("cart-items");
 import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || [];
+  // ( cartItems.length > 0)
+  if (cartItems) {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  }
+}
 
+function calcTotalCart() {
+  const cartItems = getLocalStorage("so-cart");
+  
+  if ( !cartItems) {
+    document.querySelector("#cart-footer").classList.add("hide");
+  } else {
+    document.querySelector(".hide").classList.remove("hide");
+    let total = cartItems.reduce( (sum, item) => sum + item.ListPrice, 0);
+    // console.log(total);  
+    document.querySelector("#cart-calc").innerHTML = total;
+  } 
+}
+
+function renderCartContents() {
+  const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -51,4 +72,8 @@ function removeProductFromCart(index) {
 }
 
 renderCartContents();
+
+calcTotalCart();
+
 getNumberOfItems();
+
