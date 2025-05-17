@@ -1,4 +1,6 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+const cartElement = document.getElementById("cart-items");
+import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
@@ -11,6 +13,7 @@ function renderCartContents() {
 
 function calcTotalCart() {
   const cartItems = getLocalStorage("so-cart");
+  
   if ( !cartItems) {
     document.querySelector("#cart-footer").classList.add("hide");
   } else {
@@ -21,8 +24,29 @@ function calcTotalCart() {
   } 
 }
 
-function cartItemTemplate(item) {
+function renderCartContents() {
+  const cartItems = getLocalStorage("so-cart");
+  if (cartItems) {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+    const removeButtons = document.querySelectorAll("#remove-button");
+    removeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productId = button.getAttribute("data-index");
+        removeProductFromCart(productId);
+      });
+    });
+    getNumberOfItems();
+  } else {
+    
+    cartElement.innerHTML = "Your cart is empty!";
+  }
+}
+
+function cartItemTemplate(item, index) {
   const newItem = `<li class="cart-card divider">
+  <button id="remove-button" data-index="${index}">&times;</button>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -40,5 +64,16 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function removeProductFromCart(index) {
+  const cartItems = getLocalStorage("so-cart") || [];
+  cartItems.splice(index, 1);
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
+}
+
 renderCartContents();
+
 calcTotalCart();
+
+getNumberOfItems();
+

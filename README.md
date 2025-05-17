@@ -1,7 +1,7 @@
 # BYU-Pathway Worldwide Online
 ## WDD 330 - Web Frontend Development II
 
-### Link to the siite:
+### Link to the site:
 https://kaleidoscopic-sable-3acb8d.netlify.app
 
 ### ⛺ SleepOutside Starter Code
