@@ -3,29 +3,8 @@ const cartElement = document.getElementById("cart-items");
 import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  // ( cartItems.length > 0)
-  if (cartItems) {
-    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-    document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  }
-}
-
-function calcTotalCart() {
   const cartItems = getLocalStorage("so-cart");
-  
-  if ( !cartItems) {
-    document.querySelector("#cart-footer").classList.add("hide");
-  } else {
-    document.querySelector(".hide").classList.remove("hide");
-    let total = cartItems.reduce( (sum, item) => sum + item.ListPrice, 0);
-    // console.log(total);  
-    document.querySelector("#cart-calc").innerHTML = total;
-  } 
-}
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -35,14 +14,32 @@ function renderCartContents() {
       button.addEventListener("click", () => {
         const productId = button.getAttribute("data-index");
         removeProductFromCart(productId);
+        calcTotalCart();
       });
     });
     getNumberOfItems();
+    
   } else {
     
     cartElement.innerHTML = "Your cart is empty!";
   }
 }
+
+function calcTotalCart() {
+ 
+  const cartItems = getLocalStorage("so-cart");
+   const cartFooter = document.querySelector("#cart-footer");
+  if ( !cartItems || cartItems.length === 0) {
+    cartFooter.classList.add("hide");
+  } else {
+    cartFooter.classList.remove("hide");
+    let total = cartItems.reduce( (sum, item) => sum + item.ListPrice, 0);
+    // console.log(total);  
+    document.querySelector("#cart-calc").innerHTML = total;
+  } 
+}
+
+
 
 function cartItemTemplate(item, index) {
   const newItem = `<li class="cart-card divider">
@@ -72,8 +69,5 @@ function removeProductFromCart(index) {
 }
 
 renderCartContents();
-
-calcTotalCart();
-
 getNumberOfItems();
-
+calcTotalCart();
