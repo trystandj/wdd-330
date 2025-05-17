@@ -1,9 +1,24 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  const cartItems = getLocalStorage("so-cart") || [];
+  if ( cartItems.length > 0) {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  }
+}
+
+function calcTotalCart() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  if ( cartItems.length == 0) {
+    document.querySelector(".hide").classList.add("hide");
+  } else {
+    document.querySelector(".hide").classList.remove("hide");
+    let total = cartItems.reduce( (sum, item) => sum + item.ListPrice, 0);
+    // console.log(total);  
+    document.querySelector("#cart-calc").innerHTML = total;
+  }
+  
 }
 
 function cartItemTemplate(item) {
@@ -26,3 +41,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+calcTotalCart();
