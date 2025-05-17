@@ -248,20 +248,15 @@ button#remove-button:hover {
     "image name quantity"
     "image color price";
   font-size: var(--small-font);
-  /* max-height: 120px; */
   align-items: center;
   position: relative;
 }
 
 .cart-card__image {
-   /* grid-area: image; */
-}
-
-.cart-card p {
   grid-area: image;
 }
 
-.cart-card .card__name {
+.card__name {
   grid-area: name;
 }
 
@@ -276,6 +271,7 @@ button#remove-button:hover {
 .cart-card__price {
   grid-area: price;
 }
+
 
 @media screen and (min-width: 500px) {
   body {
