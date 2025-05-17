@@ -1,5 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-
+import getNumberOfItems from "./utils.mjs";
 
 export default class ProductDetails { 
     constructor(productId, dataSource){
@@ -18,6 +18,9 @@ export default class ProductDetails {
         // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
         document.getElementById('addToCart')
         .addEventListener('click', this.addProductToCart.bind(this));
+        // add a listener to the cart icon to update the number of items in the cart
+        document.addEventListener('click', getNumberOfItems);
+        
     }
 
     
@@ -50,3 +53,6 @@ function renderProducts(product) {
 
   document.getElementById('addToCart').dataset.id = product.Id;
 }
+
+
+window.addEventListener('DOMContentLoaded', getNumberOfItems);
