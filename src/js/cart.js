@@ -18,28 +18,23 @@ function renderCartContents() {
       });
     });
     getNumberOfItems();
-    
   } else {
-    
     cartElement.innerHTML = "Your cart is empty!";
   }
 }
 
 function calcTotalCart() {
- 
   const cartItems = getLocalStorage("so-cart");
-   const cartFooter = document.querySelector("#cart-footer");
-  if ( !cartItems || cartItems.length === 0) {
+  const cartFooter = document.querySelector("#cart-footer");
+  if (!cartItems || cartItems.length === 0) {
     cartFooter.classList.add("hide");
   } else {
     cartFooter.classList.remove("hide");
-    let total = cartItems.reduce( (sum, item) => sum + item.ListPrice, 0);
-    // console.log(total);  
+    let total = cartItems.reduce((sum, item) => sum + item.ListPrice, 0);
+    // console.log(total);
     document.querySelector("#cart-calc").innerHTML = total;
-  } 
+  }
 }
-
-
 
 function cartItemTemplate(item, index) {
   const newItem = `<li class="cart-card divider">
