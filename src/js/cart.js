@@ -3,11 +3,13 @@ import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item, index) => cartItemTemplate(item, index));
+  const htmlItems = cartItems.map((item, index) =>
+    cartItemTemplate(item, index),
+  );
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
   const removeButtons = document.querySelectorAll("#remove-button");
-  removeButtons.forEach(button => {
+  removeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const productId = button.getAttribute("data-index");
       removeProductFromCart(productId);
@@ -37,7 +39,7 @@ function cartItemTemplate(item, index) {
   return newItem;
 }
 
-function removeProductFromCart(index){
+function removeProductFromCart(index) {
   const cartItems = getLocalStorage("so-cart") || [];
   cartItems.splice(index, 1);
   setLocalStorage("so-cart", cartItems);

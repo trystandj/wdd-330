@@ -228,7 +228,6 @@ button {
   font-size: var(--small-font);
   align-items: center;
   position: relative;
-
 }
 
 .cart-card__image {
@@ -268,7 +267,7 @@ button#remove-button {
 button#remove-button:hover {
   color: red;
 }
-.alert-list{
+.alert-list {
   text-align: center;
 }
 
