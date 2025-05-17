@@ -32,7 +32,7 @@ export function getParam(param) {
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
 
   const htmlStrings = list.map(templateFn);
-      if (clear) {
+  if (clear) {
     parentElement.innerHTML = "";
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
@@ -46,13 +46,13 @@ export default function getNumberOfItems() {
     const numberOfItems = 0;
     return numberOfItems;
   } else {
-     const numberOfItems = cartItems.length;
-  
- 
-  document.querySelector(".cart-count").innerHTML = numberOfItems;
-  document.querySelector(".cart-count").classList.remove("hidden");
-  if (numberOfItems === 0) {
-    document.querySelector(".cart-count").classList.add("hidden");
+    const numberOfItems = cartItems.length;
+
+
+    document.querySelector(".cart-count").innerHTML = numberOfItems;
+    document.querySelector(".cart-count").classList.remove("hidden");
+    if (numberOfItems === 0) {
+      document.querySelector(".cart-count").classList.add("hidden");
+    }
   }
-}
 }
