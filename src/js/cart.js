@@ -1,22 +1,26 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+const cartElement = document.getElementById("cart-items");
 import getNumberOfItems from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item, index) =>
-    cartItemTemplate(item, index),
-  );
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-  const removeButtons = document.querySelectorAll("#remove-button");
-  removeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const productId = button.getAttribute("data-index");
-      removeProductFromCart(productId);
+  if (cartItems) {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+    const removeButtons = document.querySelectorAll("#remove-button");
+    removeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productId = button.getAttribute("data-index");
+        removeProductFromCart(productId);
+      });
     });
-  });
-
-  getNumberOfItems();
+    getNumberOfItems();
+  } else {
+    
+    cartElement.innerHTML = "Your cart is empty!";
+  }
 }
 
 function cartItemTemplate(item, index) {

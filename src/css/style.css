@@ -165,7 +165,7 @@ button {
 }
 
 .products {
-  margin-top: 2rem;
+  margin: 2rem 0;
   padding: 1rem;
 }
 
@@ -179,6 +179,28 @@ button {
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
+}
+/* Remove */
+button#remove-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: white;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  padding: 0 0.2em;
+  line-height: 1;
+}
+
+button#remove-button:hover {
+  color: red;
+}
+/* Alert */
+.alert-list {
+  text-align: center;
 }
 
 /* Styles for product lists */
@@ -248,27 +270,6 @@ button {
 
 .cart-card__price {
   grid-area: price;
-}
-
-button#remove-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: white;
-  border: none;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  padding: 0 0.2em;
-  line-height: 1;
-}
-
-button#remove-button:hover {
-  color: red;
-}
-.alert-list {
-  text-align: center;
 }
 
 @media screen and (min-width: 500px) {
