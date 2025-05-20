@@ -155,5 +155,28 @@
     },
     "ListPrice": 104.96,
     "FinalPrice": 104.96
+  },
+  {
+    "Id": "4GWCG",
+    "NameWithoutBrand": "Homestead Super Dome 4 Tent - 4-Person, 3-Season",
+    "Name": "Homestead Super Dome 4 Tent - 4-Person, 3-Season",
+    "IsFamousBrand": false,
+    "Image": "the-north-face-homestead-super-dome-4-tent-4-person-3-season-in-teagreen-tnfnavy~p~4gwcg_01~1500.3.jpg",
+
+    "SizesAvailable": {},
+    "Colors": [
+      {
+        "ColorCode": "07",
+        "ColorName": "Teagreen/Tnfnavy"
+      }
+    ],
+    "DescriptionHtmlSimple": "<strong><a class=\"glossaryTermLink\" href=\"/closeouts~g~2312\" title=\"Closeouts: - Closeouts are items that may be last year's model or color. While closeout items are often offered at discounted prices, the products themselves are always high quality. Closeout items can include anything from shoes, underwear and apparel, to rugs, tents and outdoor equipment. Closeouts are often a high percentage off the retail price.\">Closeouts</a></strong>. Catch some z's, gaze at the stars or huddle in together for a game of cards when its rainy outside. The North Face's Homestead Super Dome 4 tent is crafted from durable polyester with water-resistant polyurethane coating, external guylines for extra security and a large dome design for full standing height.<a class=\"glossaryTermLink\" href=\"https://www.sierra.com/the-north-face-homestead-super-dome-4-tent-4-person-3-season~p~4gwcg/?merch=prod-sim-prod4GWCG\" title=\"https://www.backcountry.com/kelty-late-start-tent-1-person-3-season\"> Original Page </a>.",
+    "SuggestedRetailPrice": 89.99,
+    "Brand": {
+      "Id": "22222",
+      "Name": "North Face"
+    },
+    "ListPrice": 199.99,
+    "FinalPrice": 199.99
   }
 ]
