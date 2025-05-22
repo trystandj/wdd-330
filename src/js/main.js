@@ -1,6 +1,6 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
-import {getNumberOfItems, loadHeaderFooter} from "./utils.mjs";
+import {loadHeaderFooter, getNumberOfItems} from "./utils.mjs";
 import Alert from "./alert.js";
 
 
@@ -14,5 +14,7 @@ const element = document.querySelector(".product-list");
 const productList = new ProductList("Tents", dataSource, element);
 
 productList.init();
-loadHeaderFooter();
-getNumberOfItems();
+
+loadHeaderFooter().then(() => {
+  getNumberOfItems();
+});

@@ -39,29 +39,39 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 }
 
 export function getNumberOfItems() {
-
+  const cartCountElement = document.querySelector(".cart-count");
   const cartItems = getLocalStorage("so-cart");
-  if (!cartItems) {
-    document.querySelector(".cart-count").classList.add("hidden");
-    const numberOfItems = 0;
-    return numberOfItems;
-  } else {
-     const numberOfItems = cartItems.length;
-  
- 
-  document.querySelector(".cart-count").innerHTML = numberOfItems;
-  document.querySelector(".cart-count").classList.remove("hidden");
-  if (numberOfItems === 0) {
-    document.querySelector(".cart-count").classList.add("hidden");
+
+
+  if (!cartCountElement) {
+
+    return 0;
   }
-}
+
+  if (!cartItems) {
+    cartCountElement.classList.add("hidden");
+    cartCountElement.innerHTML = "0";
+    return 0;
+  } else {
+    const numberOfItems = cartItems.length;
+    cartCountElement.innerHTML = numberOfItems;
+    cartCountElement.classList.remove("hidden");
+
+    if (numberOfItems === 0) {
+      cartCountElement.classList.add("hidden");
+    }
+
+    return numberOfItems;
+  }
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.innerHTML = template;
-
-  if (callback) { callback(data);}  
+  if (callback) {
+    callback(data);
+  }
 }
+
 
 export async function loadTemplate(path) {
   const res = await fetch(path);
