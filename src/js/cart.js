@@ -1,6 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
-import {getNumberOfItems, loadHeaderFooter} from "./utils.mjs";
+import { getNumberOfItems, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -66,4 +66,3 @@ function removeProductFromCart(index) {
 renderCartContents();
 loadHeaderFooter();
 calcTotalCart();
-
