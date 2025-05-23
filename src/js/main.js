@@ -1,8 +1,7 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
-import {loadHeaderFooter, getNumberOfItems} from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import Alert from "./alert.js";
-
 
 const alert = new Alert();
 alert.loadAlerts();
@@ -15,6 +14,4 @@ const productList = new ProductList("Tents", dataSource, element);
 
 productList.init();
 
-loadHeaderFooter().then(() => {
-  getNumberOfItems();
-});
+loadHeaderFooter();
