@@ -180,6 +180,37 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+/* Product Grid */
+.product-grid {
+  columns: 4;
+  list-style-type: none;
+  text-align: center;
+}
+
+.product-grid a {
+  color: var(--dark-grey);
+  font-size: var(--small-font);
+}
+
+.product-grid img {
+  width:100px;
+  max-width: 90%;
+}
+
+.product-list {
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  align-items: stretch;
+}
+
+.product-list a {
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+
+
 /* Remove */
 button#remove-button {
   position: absolute;

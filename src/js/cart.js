@@ -1,5 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-const cartElement = document.getElementById("cart-items");
+
 import { getNumberOfItems, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
@@ -19,7 +19,8 @@ function renderCartContents() {
     });
     getNumberOfItems();
   } else {
-    cartElement.innerHTML = "Your cart is empty!";
+     document.querySelector(".products").insertAdjacentHTML('afterend', "<p>Your cart is empty!</p>");
+     console.log("No items in cart");
   }
 }
 
@@ -41,7 +42,7 @@ function cartItemTemplate(item, index) {
   <button id="remove-button" data-index="${index}">&times;</button>
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>
@@ -62,7 +63,7 @@ function removeProductFromCart(index) {
   setLocalStorage("so-cart", cartItems);
   renderCartContents();
 }
-
-renderCartContents();
-loadHeaderFooter();
-calcTotalCart();
+loadHeaderFooter().then(() => {
+    renderCartContents();
+    calcTotalCart();
+});
