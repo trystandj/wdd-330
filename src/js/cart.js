@@ -64,8 +64,6 @@ function removeProductFromCart(index) {
 }
 
 renderCartContents();
-loadHeaderFooter().then(() => {
-  getNumberOfItems();
-});
+loadHeaderFooter();
 calcTotalCart();
 
