@@ -1,6 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
-import getNumberOfItems from "./utils.mjs";
+import {getNumberOfItems, loadHeaderFooter} from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -14,12 +14,25 @@ function renderCartContents() {
       button.addEventListener("click", () => {
         const productId = button.getAttribute("data-index");
         removeProductFromCart(productId);
+        calcTotalCart();
       });
     });
     getNumberOfItems();
   } else {
-    
     cartElement.innerHTML = "Your cart is empty!";
+  }
+}
+
+function calcTotalCart() {
+  const cartItems = getLocalStorage("so-cart");
+  const cartFooter = document.querySelector("#cart-footer");
+  if (!cartItems || cartItems.length === 0) {
+    cartFooter.classList.add("hide");
+  } else {
+    cartFooter.classList.remove("hide");
+    let total = cartItems.reduce((sum, item) => sum + item.ListPrice, 0);
+    // console.log(total);
+    document.querySelector("#cart-calc").innerHTML = total;
   }
 }
 
@@ -51,4 +64,8 @@ function removeProductFromCart(index) {
 }
 
 renderCartContents();
-getNumberOfItems();
+loadHeaderFooter().then(() => {
+  getNumberOfItems();
+});
+calcTotalCart();
+
