@@ -1,8 +1,9 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import {getNumberOfItems, loadHeaderFooter} from "./utils.mjs";
 
-export default class ProductDetails {
-    constructor(productId, dataSource) {
+
+export default class ProductDetails { 
+    constructor(productId, dataSource){
         this.productId = productId;
         this.product = {};
         this.dataSource = dataSource;
@@ -53,7 +54,7 @@ function renderProducts(product) {
     document.querySelector('h3').textContent = product.NameWithoutBrand;
 
     const productImage = document.getElementById('productImage');
-    productImage.src = product.Image;
+    productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
 
     document.getElementById('productPrice').textContent = product.FinalPrice;

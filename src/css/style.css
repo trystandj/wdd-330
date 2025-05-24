@@ -169,6 +169,18 @@ button {
   padding: 1rem;
 }
 
+.product-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.product-links li {
+  width: 10%;
+}
+
 .product-list {
   display: flex;
   flex-flow: row wrap;
