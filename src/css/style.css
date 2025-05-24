@@ -164,6 +164,14 @@ button {
   text-align: center;
 }
 
+.categories { display: flex;   justify-content: space-around; margin: 4rem 0;   text-align: center;   flex-wrap: wrap;}
+.categories article {padding: 1rem;}
+.categories h2 { width: 100%; border: var(--primary-color) solid 2px; padding: 1rem; margin: 1rem 0; font-size: large;}
+.categories img { width: 100px;}
+.categories h3 {font-size: medium;}
+.categories a { text-decoration: none;}
+.categories a:visited {color: black;}
+
 .products {
   margin: 2rem 0;
   padding: 1rem;
@@ -326,6 +334,12 @@ button#remove-button:hover {
   .mission {
     font-size: 1.2em;
   }
+
+  .categories article {padding: 2rem;}
+  .categories h2 { padding: 2rem; margin: 2rem 0; font-size: larger;}
+  .categories img { width: 130px;}
+  .categories h3 {font-size:large;}
+
 
   .cart-card {
     font-size: inherit;

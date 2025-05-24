@@ -2,13 +2,24 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 
 function productCardTemplate(product) {
+  
+  // code to change the image size  v
+  let imageSize;
+  window.addEventListener("resize", () => {    location.reload();});
+  if (window.innerWidth > 500) {
+    imageSize = product.Images.PrimaryMedium;
+  } else {
+    imageSize = product.Images.PrimarySmall;
+  }
+  // code to change the image size   ^
+
   return `
     <li class="product-card">
       <a href="/product_pages/?product=${product.Id}">
-        <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
-        <h2>${product.Brand.Name}</h2>
-        <h3>${product.Name}</h3>
-        <p class="product-card__price">$${product.FinalPrice}</p>
+        <img src="${imageSize}" alt="${product.Name}">
+        <h3>${product.Brand.Name}</h3>
+        <p>${product.Name}</p>
+        <p class="product-card__price"><strong>$${product.FinalPrice}</strong></p>
       </a>
     </li>
     `;
@@ -23,6 +34,7 @@ export default class ProductList {
 
   async init() {
     const list = await this.dataSource.getData(this.category);
+    console.log(list);
     this.renderList(list);
   }
 

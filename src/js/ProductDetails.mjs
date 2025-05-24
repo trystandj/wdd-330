@@ -50,11 +50,22 @@ export default class ProductDetails {
 
 
 function renderProducts(product) {
+    
+    // code to change the image size  v
+    let imageSize;
+    window.addEventListener("resize", () => {    location.reload();});
+    if (window.innerWidth > 500) {
+        imageSize = product.Images.PrimaryLarge;
+    } else {
+        imageSize = product.Images.PrimaryMedium;
+    }
+    // code to change the image size   ^
+
     document.querySelector('h2').textContent = product.Brand.Name;
     document.querySelector('h3').textContent = product.NameWithoutBrand;
 
     const productImage = document.getElementById('productImage');
-    productImage.src = product.Images.PrimaryLarge;
+    productImage.src = imageSize;
     productImage.alt = product.NameWithoutBrand;
 
     document.getElementById('productPrice').textContent = product.FinalPrice;
