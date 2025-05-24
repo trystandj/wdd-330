@@ -290,6 +290,7 @@ button#remove-button:hover {
   font-size: var(--small-font);
   align-items: center;
   position: relative;
+  margin: 1rem 0;
 }
 
 .cart-card__image {
