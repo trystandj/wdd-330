@@ -90,3 +90,16 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement, null, getNumberOfItems);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+
+export function searchProducts(products, searchTerm) {
+  searchTerm = searchTerm.toLowerCase();
+  return products.filter((product) => {
+    const productName = product.name.toLowerCase();
+    const productDescription = product.description.toLowerCase();
+    return (
+      productName.includes(searchTerm) ||
+      productDescription.includes(searchTerm)
+    );
+  });
+}
