@@ -164,6 +164,14 @@ button {
   text-align: center;
 }
 
+.categories { display: flex;   justify-content: space-around;   margin: 4rem 0;   text-align: center;   flex-wrap: wrap;
+}
+.categories article {padding: 25px;}
+.categories h2 {width: 100%; border: var(--primary-color) solid 2px; padding: 2rem; margin: 2rem 0;}
+.categories img { width: 150px;}
+.categories a { text-decoration: none;}
+.categories a:visited {color: black;}
+
 .products {
   margin: 2rem 0;
   padding: 1rem;

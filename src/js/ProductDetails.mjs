@@ -56,3 +56,7 @@ function renderProducts(product) {
 
 
 window.addEventListener('DOMContentLoaded', getNumberOfItems);
+
+loadHeaderFooter().then(() => {
+  getNumberOfItems();
+});
