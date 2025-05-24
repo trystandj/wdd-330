@@ -53,7 +53,7 @@ export function getNumberOfItems() {
     cartCountElement.innerHTML = "0";
     return 0;
   } else {
-    const numberOfItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const numberOfItems = cartItems.reduce((sum, item) => sum + (item.quantity ?? 1), 0);
     cartCountElement.innerHTML = numberOfItems;
     cartCountElement.classList.remove("hidden");
 
