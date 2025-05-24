@@ -36,7 +36,7 @@ function calcTotalCart() {
       0,
     );
     // console.log(total);
-    document.querySelector("#cart-calc").innerHTML = total;
+    document.querySelector("#cart-calc").innerHTML = total.toFixed(2);
   }
 }
 
