@@ -30,7 +30,10 @@ function calcTotalCart() {
     cartFooter.classList.add("hide");
   } else {
     cartFooter.classList.remove("hide");
-    let total = cartItems.reduce((sum, item) => sum + item.FinalPrice * (item.quantity ?? 1), 0);
+    let total = cartItems.reduce(
+      (sum, item) => sum + item.FinalPrice * (item.quantity ?? 1),
+      0,
+    );
     // console.log(total);
     document.querySelector("#cart-calc").innerHTML = total;
   }
