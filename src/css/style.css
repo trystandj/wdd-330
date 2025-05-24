@@ -36,6 +36,13 @@ header {
   padding: 0.5rem;
 }
 
+header .search {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-base); 
+  width: 500px;
+}
+
 p {
   padding: 0.75rem;
 }
