@@ -21,4 +21,9 @@ export default class ProductData {
     const data = await convertToJson(product)
     return data.Result
   }
+  async searchByName(name) {
+    const response = await fetch(`${baseURL}products/search/${name}`);
+    const data = await convertToJson(response);
+    return data.Result;
+  }
 }
