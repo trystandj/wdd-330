@@ -276,6 +276,27 @@ button#remove-button:hover {
   visibility: hidden;
 }
 
+#icon-container{
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  padding: 1rem;
+  
+}
+
+#icon-container .home-icons{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--dark-grey);
+  gap: 1rem;
+}
+
+#icon-container .home-icons img{
+  height: 150px;
+  width: 150px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
