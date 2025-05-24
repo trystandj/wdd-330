@@ -87,8 +87,30 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector("#header");
   const footerElement = document.querySelector("#footer");
   // Render the header and footer using renderWithTemplate
-  renderWithTemplate(headerTemplate, headerElement, null, getNumberOfItems);
+  renderWithTemplate(headerTemplate, headerElement, null, () => {
+    getNumberOfItems();
+    handleSearch(); // Initialize search after header is rendered
+  });
   renderWithTemplate(footerTemplate, footerElement);
 }
 
 
+export function handleSearch() {
+  const searchForm = document.getElementById('searchForm');
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const searchTerm = document.getElementById('searchInput').value.trim();
+      
+      if (searchTerm) {
+        // Navigate to product listing page with search parameter
+        window.location.href = `/product-listing/?search=${encodeURIComponent(searchTerm)}`;
+      }
+    });
+  }
+}
+
+export function getSearchParam() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('search');
+}

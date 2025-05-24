@@ -1,6 +1,5 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
-
 function productCardTemplate(product) {
   return `
     <li class="product-card">
@@ -22,25 +21,18 @@ export default class ProductList {
   }
 
   async init() {
-    const list = await this.dataSource.searchByName(this.category);
+    const list = await this.dataSource.getData(this.category);
     this.renderList(list);
   }
-  update(productArray) {
-    this.listElement.innerHTML = ""; 
-    productArray.forEach(product => {
-      const item = document.createElement("li");
-      item.innerHTML = productCardTemplate(product);
-      this.listElement.appendChild(item);
-    });
+  
+  // Add new method for search
+  async initWithSearch(searchTerm) {
+    const list = await this.dataSource.searchProducts(searchTerm);
+    this.renderList(list);
+    return list.length; // Return count for display purposes
   }
 
   renderList(list) {
-    // const htmlStrings = list.map(productCardTemplate);
-    // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-
-    // apply use new utility function instead of the commented code above
     renderListWithTemplate(productCardTemplate, this.listElement, list);
-
   }
-
 }
