@@ -77,8 +77,7 @@ function updateCarrtItemQuantity(index, action) {
     item.quantity = (item.quantity || 1) + 1;
   } else if (action === "minus" && item.quantity > 1) {
     item.quantity -= 1;
-  }
-  else if (action === "minus" && item.quantity === 1) {
+  } else if (action === "minus" && item.quantity === 1) {
     removeProductFromCart(index);
     return;
   }
@@ -106,8 +105,6 @@ function addCartItemQuantityListener() {
   });
 }
 
-
 renderCartContents();
 loadHeaderFooter();
 calcTotalCart();
-
