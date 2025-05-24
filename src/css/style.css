@@ -193,7 +193,7 @@ button {
   color: var(--dark-grey);
 }
 /* Remove */
-button#remove-button {
+button.remove-button {
   position: absolute;
   top: 5px;
   right: 5px;
