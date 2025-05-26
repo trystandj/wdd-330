@@ -10,7 +10,6 @@ topElement.textContent += `: ${category
   .split("-")
   .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
   .join(" ")}`;
-console.log(category);
 const dataSource = new ProductData();
 const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);

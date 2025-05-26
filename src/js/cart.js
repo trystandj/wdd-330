@@ -1,6 +1,10 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
-import { getNumberOfItems, loadHeaderFooter } from "./utils.mjs";
+import {
+  getNumberOfItems,
+  loadHeaderFooter,
+  calcDiscountPrice,
+} from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -32,9 +36,11 @@ function calcTotalCart() {
   } else {
     cartFooter.classList.remove("hide");
     let total = cartItems.reduce(
-      (sum, item) => sum + item.FinalPrice * (item.quantity ?? 1),
+      (sum, item) =>
+        sum + calcDiscountPrice(item.FinalPrice) * (item.quantity ?? 1),
       0,
     );
+
     // console.log(total);
     document.querySelector("#cart-calc").innerHTML = total.toFixed(2);
   }
@@ -42,7 +48,6 @@ function calcTotalCart() {
 
 function cartItemTemplate(item, index) {
   const newItem = `<li class="cart-card divider">
-  <button id="remove-button" data-index="${index}">&times;</button>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Images.PrimarySmall}"
@@ -56,7 +61,7 @@ function cartItemTemplate(item, index) {
   <button id="cart-item-quantity-minus" data-index="${item.quantity}">-</button>
   <button id="cart-item-quantity-add" data-index="${item.quantity}">+</button>
   <p class="cart-card__quantity">qty: ${item.quantity ?? 1}</p>
-  <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
+  <p class="cart-card__price">$${calcDiscountPrice(item.FinalPrice)}</p>
 </li>`;
 
   return newItem;
