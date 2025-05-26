@@ -331,7 +331,7 @@ button#remove-button:hover {
     grid-template-columns: 150px auto 15%;
   }
 
-  .discounted{
+  .discounted {
     position: relative;
     right: -170px;
     height: 30px;
@@ -342,12 +342,12 @@ button#remove-button:hover {
     text-align: center;
     align-content: center;
   }
-  
-  #price-wrapper{
+
+  #price-wrapper {
     display: flex;
   }
 
-  .product__discount{
+  .product__discount {
     color: red;
   }
 }

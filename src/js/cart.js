@@ -1,6 +1,10 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
-import { getNumberOfItems, loadHeaderFooter, calcDiscountPrice } from "./utils.mjs";
+import {
+  getNumberOfItems,
+  loadHeaderFooter,
+  calcDiscountPrice,
+} from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -32,7 +36,8 @@ function calcTotalCart() {
   } else {
     cartFooter.classList.remove("hide");
     let total = cartItems.reduce(
-      (sum, item) => sum + calcDiscountPrice(item.FinalPrice) * (item.quantity ?? 1),
+      (sum, item) =>
+        sum + calcDiscountPrice(item.FinalPrice) * (item.quantity ?? 1),
       0,
     );
 
