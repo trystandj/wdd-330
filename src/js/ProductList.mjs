@@ -1,17 +1,28 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, calcDiscountPrice} from "./utils.mjs";
 
 
 function productCardTemplate(product) {
+  const discountPrice = calcDiscountPrice(product.FinalPrice)
+  let discountClass = discountPrice >= product.FinalPrice ? "hide" : " ";
+  const discount = ((product.FinalPrice - discountPrice) / product.FinalPrice) * 100;
+
+  const strikeStyle = discountPrice < product.FinalPrice ? 'text-decoration: line-through; color: rgba(0,0,0,0.7);' : '';
+  const removeDiscount = discountPrice < product.FinalPrice ?`<p class="product__discount">$${discountPrice}</p>` : '';
+  
   return `
     <li class="product-card">
+      <div class="discounted ${discountClass}">%${discount.toFixed(0)} Off</div>
       <a href="/product_pages/?product=${product.Id}">
         <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
-        <p class="product-card__price">$${product.FinalPrice}</p>
+        <div id="price-wrapper">
+          <p class="product-card__price" style="${strikeStyle}">$${product.FinalPrice.toFixed(2)}</p>
+          ${removeDiscount}
+        </div>
       </a>
     </li>
-    `;
+  `;
 }
 
 export default class ProductList {
