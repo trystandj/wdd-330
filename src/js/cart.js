@@ -1,10 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
-import {
-  getNumberOfItems,
-  loadHeaderFooter,
-  calcDiscountPrice,
-} from "./utils.mjs";
+import { getNumberOfItems, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -13,41 +9,39 @@ function renderCartContents() {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
-    const removeButtons = document.querySelectorAll("#remove-button");
+    const removeButtons = document.querySelectorAll(".remove-button");
     removeButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const productId = button.getAttribute("data-index");
         removeProductFromCart(productId);
-        calcTotalCart();
       });
     });
-    addCartItemQuantityListener();
     getNumberOfItems();
   } else {
     cartElement.innerHTML = "Your cart is empty!";
   }
+  calcTotalCart();
 }
 
 function calcTotalCart() {
   const cartItems = getLocalStorage("so-cart");
   const cartFooter = document.querySelector("#cart-footer");
-  if (!cartItems || cartItems.length === 0) {
+  if (!cartItems || cartItems.length == 0) {
     cartFooter.classList.add("hide");
   } else {
     cartFooter.classList.remove("hide");
     let total = cartItems.reduce(
-      (sum, item) =>
-        sum + calcDiscountPrice(item.FinalPrice) * (item.quantity ?? 1),
+      (sum, item) => sum + item.FinalPrice * (item.quantity ?? 1),
       0,
     );
-
     // console.log(total);
-    document.querySelector("#cart-calc").innerHTML = total.toFixed(2);
+    document.querySelector("#cart-calc").innerHTML = `$${total.toFixed(2)}`;
   }
 }
 
-function cartItemTemplate(item, index) {
+function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <button class="remove-button" data-index="${item.Id}">&times;</button>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Images.PrimarySmall}"
@@ -58,57 +52,30 @@ function cartItemTemplate(item, index) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <button id="cart-item-quantity-minus" data-index="${item.quantity}">-</button>
-  <button id="cart-item-quantity-add" data-index="${item.quantity}">+</button>
   <p class="cart-card__quantity">qty: ${item.quantity ?? 1}</p>
-  <p class="cart-card__price">$${calcDiscountPrice(item.FinalPrice)}</p>
+  <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
 </li>`;
 
   return newItem;
 }
 
-function removeProductFromCart(index) {
-  const cartItems = getLocalStorage("so-cart") || [];
-  cartItems.splice(index, 1);
-  setLocalStorage("so-cart", cartItems);
-  renderCartContents();
-}
+function removeProductFromCart(productId) {
+  let cartItems = getLocalStorage("so-cart") || [];
 
-function updateCarrtItemQuantity(index, action) {
-  const cartItems = getLocalStorage("so-cart") || [];
-  const item = cartItems[index];
-
-  if (action === "add" && item.quantity < 99) {
-    item.quantity = (item.quantity || 1) + 1;
-  } else if (action === "minus" && item.quantity > 1) {
-    item.quantity -= 1;
-  } else if (action === "minus" && item.quantity === 1) {
-    removeProductFromCart(index);
-    return;
+  for (let i = cartItems.length - 1; i >= 0; i--) {
+    if (String(cartItems[i].Id) === String(productId)) {  // FIXED
+      if (cartItems[i].quantity > 1) {
+        cartItems[i].quantity -= 1;
+      } else {
+        cartItems.splice(i, 1);
+      }
+      break;
+    }
   }
-
   setLocalStorage("so-cart", cartItems);
   renderCartContents();
 }
 
-function addCartItemQuantityListener() {
-  const minusButtons = document.querySelectorAll("#cart-item-quantity-minus");
-  const addButtons = document.querySelectorAll("#cart-item-quantity-add");
-
-  minusButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      updateCarrtItemQuantity(index, "minus");
-      calcTotalCart();
-    });
-  });
-
-  addButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      updateCarrtItemQuantity(index, "add");
-      calcTotalCart();
-    });
-  });
-}
 
 renderCartContents();
 loadHeaderFooter();

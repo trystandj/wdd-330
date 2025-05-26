@@ -193,41 +193,13 @@ button {
   color: var(--dark-grey);
 }
 /* Remove */
-button#remove-button {
+button.remove-button {
   position: absolute;
-  top: 0.1px;
+  top: 5px;
   right: 5px;
   background-color: white;
   border: none;
-  font-size: 30px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  padding: 0 0.2em;
-  line-height: 1;
-}
-
-button#cart-item-quantity-minus {
-  position: absolute;
-  top: 10px;
-  right: 110px;
-  background-color: white;
-  border: none;
   font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  padding: 0 0.2em;
-  line-height: 1;
-}
-
-button#cart-item-quantity-add {
-  position: absolute;
-  top: 13px;
-  right: 35px;
-  background-color: white;
-  border: none;
-  font-size: 18px;
   font-weight: bold;
   color: #333;
   cursor: pointer;
@@ -329,26 +301,6 @@ button#remove-button:hover {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
-  }
-
-  .discounted {
-    position: relative;
-    right: -170px;
-    height: 30px;
-    width: 70px;
-    background-color: var(--tertiary-color);
-    color: whitesmoke;
-    font-size: 12px;
-    text-align: center;
-    align-content: center;
-  }
-
-  #price-wrapper {
-    display: flex;
-  }
-
-  .product__discount {
-    color: red;
   }
 }
 
