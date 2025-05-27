@@ -1,28 +1,37 @@
-import { renderListWithTemplate } from "./utils.mjs";
+
+import { renderListWithTemplate, calcDiscountPrice } from "./utils.mjs";
 
 
 function productCardTemplate(product) {
-  
-  // code to change the image size  v
+  const discountPrice = calcDiscountPrice(product.FinalPrice)
+  let discountClass = discountPrice >= product.FinalPrice ? "hide" : " ";
+  const discount = ((product.FinalPrice - discountPrice) / product.FinalPrice) * 100;
+
+  const strikeStyle = discountPrice < product.FinalPrice ? 'text-decoration: line-through; color: rgba(0,0,0,0.7);' : '';
+  const removeDiscount = discountPrice < product.FinalPrice ? `<p class="product__discount">$${discountPrice}</p>` : '';
+
   let imageSize;
-  window.addEventListener("resize", () => {    location.reload();});
+  window.addEventListener("resize", () => { location.reload(); });
   if (window.innerWidth > 500) {
     imageSize = product.Images.PrimaryMedium;
   } else {
     imageSize = product.Images.PrimarySmall;
   }
-  // code to change the image size   ^
 
   return `
     <li class="product-card">
+      <div class="discounted ${discountClass}">%${discount.toFixed(0)} Off</div>
       <a href="/product_pages/?product=${product.Id}">
         <img src="${imageSize}" alt="${product.Name}">
-        <h3>${product.Brand.Name}</h3>
-        <p>${product.Name}</p>
-        <p class="product-card__price"><strong>$${product.FinalPrice}</strong></p>
+        <h2>${product.Brand.Name}</h2>
+        <h3>${product.Name}</h3>
+        <div id="price-wrapper">
+          <p class="product-card__price" style="${strikeStyle}">$${product.FinalPrice.toFixed(2)}</p>
+          ${removeDiscount}
+        </div>
       </a>
     </li>
-    `;
+  `;
 }
 
 export default class ProductList {
@@ -34,7 +43,6 @@ export default class ProductList {
 
   async init() {
     const list = await this.dataSource.getData(this.category);
-    // console.log(list);
     this.renderList(list);
   }
 
