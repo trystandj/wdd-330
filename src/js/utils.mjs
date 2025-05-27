@@ -72,6 +72,15 @@ export function renderWithTemplate(template, parentElement, data, callback) {
   }
 }
 
+export function calcDiscountPrice(itemPrice) {
+  const discount = 30;
+  const discountPercentage = discount / 100;
+  const originalPrice = itemPrice;
+  let total = (1 - discountPercentage) * originalPrice;
+  total = Math.trunc(total * 100) / 100;
+  return total.toFixed(2);
+}
+
 
 export async function loadTemplate(path) {
   const res = await fetch(path);
