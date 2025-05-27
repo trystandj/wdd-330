@@ -1,4 +1,5 @@
-import { renderListWithTemplate, calcDiscountPrice} from "./utils.mjs";
+
+import { renderListWithTemplate, calcDiscountPrice } from "./utils.mjs";
 
 
 function productCardTemplate(product) {
@@ -7,13 +8,21 @@ function productCardTemplate(product) {
   const discount = ((product.FinalPrice - discountPrice) / product.FinalPrice) * 100;
 
   const strikeStyle = discountPrice < product.FinalPrice ? 'text-decoration: line-through; color: rgba(0,0,0,0.7);' : '';
-  const removeDiscount = discountPrice < product.FinalPrice ?`<p class="product__discount">$${discountPrice}</p>` : '';
-  
+  const removeDiscount = discountPrice < product.FinalPrice ? `<p class="product__discount">$${discountPrice}</p>` : '';
+
+  let imageSize;
+  window.addEventListener("resize", () => { location.reload(); });
+  if (window.innerWidth > 500) {
+    imageSize = product.Images.PrimaryMedium;
+  } else {
+    imageSize = product.Images.PrimarySmall;
+  }
+
   return `
     <li class="product-card">
       <div class="discounted ${discountClass}">%${discount.toFixed(0)} Off</div>
       <a href="/product_pages/?product=${product.Id}">
-        <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
+        <img src="${imageSize}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
         <div id="price-wrapper">
