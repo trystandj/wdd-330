@@ -347,24 +347,24 @@ button#remove-button:hover {
   visibility: hidden;
 
   .discounted {
-      position: relative;
-      right: -170px;
-      height: 30px;
-      width: 70px;
-      background-color: var(--tertiary-color);
-      color: whitesmoke;
-      font-size: 12px;
-      text-align: center;
-      align-content: center;
-    }
-  
-    #price-wrapper {
-      display: flex;
-    }
-  
-    .product__discount {
-      color: red;
-    }
+    position: relative;
+    right: -170px;
+    height: 30px;
+    width: 70px;
+    background-color: var(--tertiary-color);
+    color: whitesmoke;
+    font-size: 12px;
+    text-align: center;
+    align-content: center;
+  }
+
+  #price-wrapper {
+    display: flex;
+  }
+
+  .product__discount {
+    color: red;
+  }
 }
 
 @media screen and (min-width: 500px) {

@@ -1,6 +1,10 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartElement = document.getElementById("cart-items");
-import { getNumberOfItems, loadHeaderFooter, calcDiscountPrice } from "./utils.mjs";
+import {
+  getNumberOfItems,
+  loadHeaderFooter,
+  calcDiscountPrice,
+} from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
