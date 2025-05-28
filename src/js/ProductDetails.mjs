@@ -1,5 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import {getNumberOfItems, loadHeaderFooter} from "./utils.mjs";
+import {getNumberOfItems, loadHeaderFooter, calcDiscountPrice} from "./utils.mjs";
 
 
 export default class ProductDetails { 
@@ -21,6 +21,7 @@ export default class ProductDetails {
             .addEventListener('click', this.addProductToCart.bind(this));
         // add a listener to the cart icon to update the number of items in the cart
         document.addEventListener('click', getNumberOfItems);
+        calcDiscount(this.product)
 
     }
 
@@ -68,12 +69,29 @@ function renderProducts(product) {
     productImage.src = imageSize;
     productImage.alt = product.NameWithoutBrand;
 
-    document.getElementById('productPrice').textContent = product.FinalPrice;
+    document.getElementById('productPrice').textContent = "$" + product.FinalPrice;
     document.getElementById('productColor').textContent = product.Colors[0].ColorName;
     document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
 
     document.getElementById('addToCart').dataset.id = product.Id;
 }
 
+
+function calcDiscount(product) {
+    const discountPrice = calcDiscountPrice(product.FinalPrice);
+    const discountPriceContainer = document.querySelector(".product__discount");
+
+    if (!discountPriceContainer) return;
+
+    if (discountPrice < product.FinalPrice) {
+        const price = document.querySelector(".product-card__price");
+        price.style.textDecoration = "line-through";
+        price.style.color = "rgba(0, 0, 0, 0.7)";
+        discountPriceContainer.classList.remove("hide");
+        discountPriceContainer.innerHTML = "$" + `${discountPrice}`;
+    } else {
+        discountPriceContainer.classList.add("hide");
+    }
+}
 
 window.addEventListener('DOMContentLoaded', getNumberOfItems);
