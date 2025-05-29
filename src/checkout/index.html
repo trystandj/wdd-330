@@ -60,6 +60,53 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form id="form" action="thankyou.html" method="GET">
+          <div class="form-control">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" autocomplete="given-name" placeholder="First Name">
+          </div>
+          <div class="form-control">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="Last Name">
+          </div>
+          <div class="form-control">
+            <label for="organization-title">Organizational Title</label>
+            <input type="text" id="organization-title" name="organization-title" autocomplete="organization-title"
+              placeholder="Ex. President">
+          </div>
+          <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="JaneDoe@example.com">
+          </div>
+          <div class="form-control">
+            <label for="tel">Contact Number</label>
+            <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="+XXXX-XXXX-XXXX">
+          </div>
+          <div class="form-control">
+            <label for="organization">Business/Organization Name</label>
+            <input type="text" id="organization" name="organization" autocomplete="organization">
+          </div>
+          <br>
+          <div class="membership-selection">
+            <label for="membership-level">Membership Level</label>
+            <select id="membership-level" name="membership-level">
+              <option value="" disabled selected>Select a membership level...</option>
+              <option value="np">NP Membership (Non-Profit, No Fee)</option>
+              <option value="bronze">Bronze Membership</option>
+              <option value="silver">Silver Membership</option>
+              <option value="gold">Gold Membership</option>
+            </select>
+          </div>
+          <br>
+          <div class="business-description">
+            <label for="organization-description">Business/Organization Description:</label>
+            <textarea id="organization-description" name="organization-description" maxlength="200"></textarea>
+          </div>
+          <input id="submit" type="submit" value="Submit Application">
+          <div class="timestamp-container">
+            <input type="hidden" id="timestamp" name="timestamp">
+          </div>
+        </form>
       </section>
     </main>
 
