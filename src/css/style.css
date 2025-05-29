@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -375,12 +375,12 @@ button#remove-button:hover {
   color: red;
 }
 
-#total{
+#total {
   display: flex;
   padding: 0;
   align-items: center;
 }
-.cart-total{
+.cart-total {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
@@ -391,7 +391,6 @@ button#remove-button:hover {
   font-size: medium;
   justify-self: end;
 }
-
 
 @media screen and (min-width: 500px) {
   body {

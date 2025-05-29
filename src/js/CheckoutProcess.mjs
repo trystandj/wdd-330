@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, calcDiscountPrice } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -40,6 +40,7 @@ export default class CheckoutProcess {
     init() {
         this.list = getLocalStorage(this.key);
         this.calculateItemSummary();
+        this.calculateOrderTotal();
     }
 
     calculateItemSummary() {
@@ -50,10 +51,10 @@ export default class CheckoutProcess {
         const itemNumElement = document.querySelector(
             this.outputSelector + " #num-items"
         );
-        itemNumElement.innerText = this.list.length;
+        itemNumElement.innerText = this.list.map((item) => this.list.length * (item.quantity ?? 1));
         // calculate the total of all the items in the cart
-        const amounts = this.list.map((item) => item.FinalPrice);
-        this.itemTotal = amounts.reduce((sum, item) => sum + item);
+        const amounts = this.list.map((item) => calcDiscountPrice(item.FinalPrice) * (item.quantity ?? 1));
+        this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
         summaryElement.innerText = `$${this.itemTotal}`;;
     }
 
