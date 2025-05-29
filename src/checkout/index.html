@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="../js/checkout.js" type="module" defer></script>
   </head>
 
@@ -61,47 +61,59 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
         <form id="form" action="thankyou.html" method="GET">
+          <fieldset>
+            <legend for="email">Customer Name</legend>
           <div class="form-control">
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="fname" autocomplete="given-name" placeholder="First Name">
+            <input type="text" id="fname" name="fname" autocomplete="given-name" placeholder="First Name" required>
           </div>
           <div class="form-control">
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="Last Name">
+            <input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="Last Name" required>
+          </div>
+          </fieldset>
+          <fieldset>
+            <legend for="email">Adress</legend>
+          <div class="form-control">
+            <label for="street-address">Street Adress</label>
+            <input type="text" id="street-address" name="street-address" autocomplete="street-address" required>
           </div>
           <div class="form-control">
-            <label for="organization-title">Organizational Title</label>
-            <input type="text" id="organization-title" name="organization-title" autocomplete="organization-title"
-              placeholder="Ex. President">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" autocomplete="city" required>
           </div>
           <div class="form-control">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="JaneDoe@example.com">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" autocomplete="state" required>
           </div>
           <div class="form-control">
-            <label for="tel">Contact Number</label>
-            <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="+XXXX-XXXX-XXXX">
+            <label for="zip-code">Zip Code</label>
+            <input type="number" id="zip-code" name="zip-code" autocomplete="zip-code" required>
+          </div>
+          </fieldset>
+          <fieldset>
+          <legend for="email">Card Information</legend>
+          <div class="form-control">
+            <label for="credit-card">Credit Card Number</label>
+            <input type="number" id="credit-card" name="credit-card" autocomplete="credit-card" required>
           </div>
           <div class="form-control">
-            <label for="organization">Business/Organization Name</label>
-            <input type="text" id="organization" name="organization" autocomplete="organization">
+            <label for="expiration">Expiration Date</label>
+            <input type="number" id="expiration" name="expiration" autocomplete="expiration" required>
           </div>
+          <div class="form-control">
+            <label for="security-code">Security Code</label>
+            <input type="number" id="security-code" name="security-code" autocomplete="security-code" required>
+          </div>
+        </fieldset>
+        <fieldset>
+          <p id="subtotal">Subtotal:</p>
+          <p id="tax">Tax:</p>
+          <p id="shipping">Shipping Estimate:</p>
+          <p id="Order-total">Order Total:</p>
+
+        </fieldset>
           <br>
-          <div class="membership-selection">
-            <label for="membership-level">Membership Level</label>
-            <select id="membership-level" name="membership-level">
-              <option value="" disabled selected>Select a membership level...</option>
-              <option value="np">NP Membership (Non-Profit, No Fee)</option>
-              <option value="bronze">Bronze Membership</option>
-              <option value="silver">Silver Membership</option>
-              <option value="gold">Gold Membership</option>
-            </select>
-          </div>
-          <br>
-          <div class="business-description">
-            <label for="organization-description">Business/Organization Description:</label>
-            <textarea id="organization-description" name="organization-description" maxlength="200"></textarea>
-          </div>
           <input id="submit" type="submit" value="Submit Application">
           <div class="timestamp-container">
             <input type="hidden" id="timestamp" name="timestamp">
