@@ -171,9 +171,11 @@ button {
   text-align: center;
   flex-wrap: wrap;
 }
+
 .categories article {
   padding: 1rem;
 }
+
 .categories h2 {
   width: 100%;
   border: var(--primary-color) solid 2px;
@@ -181,15 +183,19 @@ button {
   margin: 1rem 0;
   font-size: large;
 }
+
 .categories img {
   width: 100px;
 }
+
 .categories h3 {
   font-size: medium;
 }
+
 .categories a {
   text-decoration: none;
 }
+
 .categories a:visited {
   color: black;
 }
@@ -222,6 +228,7 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 /* Remove */
 button#remove-button {
   position: absolute;
@@ -268,6 +275,7 @@ button#cart-item-quantity-add {
 button#remove-button:hover {
   color: red;
 }
+
 /* Alert */
 .alert-list {
   text-align: center;
@@ -345,26 +353,43 @@ button#remove-button:hover {
 
 .hide {
   visibility: hidden;
+}
 
-  .discounted {
-    position: relative;
-    right: -170px;
-    height: 30px;
-    width: 70px;
-    background-color: var(--tertiary-color);
-    color: whitesmoke;
-    font-size: 12px;
-    text-align: center;
-    align-content: center;
-  }
+.discounted {
+  position: relative;
+  right: -170px;
+  height: 30px;
+  width: 70px;
+  background-color: var(--tertiary-color);
+  color: whitesmoke;
+  font-size: 12px;
+  text-align: center;
+  align-content: center;
+}
 
-  #price-wrapper {
-    display: flex;
-  }
+#price-wrapper {
+  display: flex;
+}
 
-  .product__discount {
-    color: red;
-  }
+.product__discount {
+  color: red;
+}
+
+#total {
+  display: flex;
+  padding: 0;
+  align-items: center;
+}
+.cart-total {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+  align-content: center;
+}
+
+.cart-total #checkout-button {
+  font-size: medium;
+  justify-self: end;
 }
 
 @media screen and (min-width: 500px) {
@@ -380,14 +405,17 @@ button#remove-button:hover {
   .categories article {
     padding: 2rem;
   }
+
   .categories h2 {
     padding: 2rem;
     margin: 2rem 0;
     font-size: larger;
   }
+
   .categories img {
     width: 130px;
   }
+
   .categories h3 {
     font-size: large;
   }
@@ -395,26 +423,6 @@ button#remove-button:hover {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
-  }
-
-  .discounted {
-    position: relative;
-    right: -170px;
-    height: 30px;
-    width: 70px;
-    background-color: var(--tertiary-color);
-    color: whitesmoke;
-    font-size: 12px;
-    text-align: center;
-    align-content: center;
-  }
-
-  #price-wrapper {
-    display: flex;
-  }
-
-  .product__discount {
-    color: red;
   }
 }
 
