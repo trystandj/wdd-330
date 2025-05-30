@@ -1,5 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import {getNumberOfItems, loadHeaderFooter, calcDiscountPrice} from "./utils.mjs";
+import {getNumberOfItems, loadHeaderFooter, calcDiscountPrice, alertMessage} from "./utils.mjs";
 
 
 export default class ProductDetails { 
@@ -39,6 +39,7 @@ export default class ProductDetails {
             cartItems.push(productToAdd);
         }
         setLocalStorage("so-cart", cartItems);
+         alertMessage(`${this.product.NameWithoutBrand} added to the cart!`);
     }
 
 
