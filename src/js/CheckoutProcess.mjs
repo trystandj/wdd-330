@@ -86,10 +86,10 @@ export default class CheckoutProcess {
     const order = formDataToJSON(formElement);
 
     order.orderDate = new Date().toISOString();
-    order.orderTotal = this.orderTotal;
-    order.tax = this.tax;
-    order.shipping = this.shipping;
-    order.items = packageItems(this.list);
+    order.orderTotal = this.orderTotal.trim();
+      order.tax = this.tax.trim();
+      order.shipping = this.shipping.trim();
+      order.items = packageItems(this.list.trim());
     console.log(order);
 
     try {
