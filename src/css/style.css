@@ -99,7 +99,7 @@ p {
   color: var(--tertiary-color);
 }
 
-button {
+.product-detail__add button, .cart-total button, #checkoutForm button{
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
@@ -429,4 +429,25 @@ button#remove-button:hover {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+.alert span {
+  position: 
+  relative;
+  top: 0px;
+  left: 15px;
+  background-color: transparent;
+  color: white;
+}
+
+.alert {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.5em;
+  margin: 5px;
+  width: fit-content;
+  border-radius: 5px;
+  position: relative
+  ;
+  
 }
