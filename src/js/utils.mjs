@@ -99,3 +99,4 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement, null, getNumberOfItems);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
