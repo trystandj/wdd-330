@@ -28,6 +28,7 @@
                 id="fname"
                 required
                 pattern="[A-Za-z]+"
+                title="First name must contain only letters"
               />
               <label for="lname">Last Name</label>
               <input
@@ -36,6 +37,7 @@
                 id="lname"
                 required
                 pattern="[A-Za-z]+"
+                title="Last name must contain only letters"
               />
             </div>
             <div class="checkout__address">
@@ -48,6 +50,7 @@
                 id="city"
                 required
                 pattern="[A-Za-z]+"
+                or 12345-6789
               />
               <label for="state">State</label>
               <input
@@ -56,6 +59,7 @@
                 id="state"
                 required
                 pattern="[A-Za-z]+"
+                title="State must contain only letters"
               />
               <label for="zip">Zip</label>
               <input
@@ -64,6 +68,7 @@
                 id="zip"
                 required
                 pattern="\d{5}(-\d{4})?"
+                title="Zip code must be in the format 12345"
               />
             </div>
           </fieldset>
@@ -79,6 +84,7 @@
                 required
                 pattern="\d{16}"
                 inputmode="numeric"
+                title="Card number must be 16 digits"
               />
               <label for="expiration">Expiration</label>
               <input
@@ -96,6 +102,7 @@
                 required
                 pattern="\d{3,4}"
                 inputmode="numeric"
+                title="CVV must be 3 or 4 digits"
               />
             </div>
           </fieldset>
