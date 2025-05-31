@@ -1,10 +1,14 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error("Bad Response");
+async function convertToJson(res) {
+  const data = await res.json();
+ 
+    
+    if(res.ok) {
+      return data;
+    } 
+   else {
+    throw { name: "servicesError", message: data };v
   }
 }
 
@@ -36,4 +40,18 @@ export default class ExternalServices {
     };
     return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
   }
+  
+  async createUser(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    };
+    return await fetch(`${baseURL}users/`, options).then(convertToJson);
+  }
 }
+
+
+
