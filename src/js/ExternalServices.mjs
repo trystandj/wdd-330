@@ -8,7 +8,7 @@ async function convertToJson(res) {
       return data;
     } 
    else {
-    throw { name: "servicesError", message: data };v
+    throw { name: "servicesError", message: data };
   }
 }
 
