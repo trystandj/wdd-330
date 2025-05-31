@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const registration = new Registrationprocess("so-cart", ".checkout-summary");
   registration.init();
 
-  const myForm = document.forms["Register"]; 
+  const myForm = document.forms["Register"];
   myForm.addEventListener("submit", (e) => {
     e.preventDefault();
     if (myForm.checkValidity()) {

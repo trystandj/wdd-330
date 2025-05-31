@@ -100,7 +100,10 @@ p {
   color: var(--tertiary-color);
 }
 
-.product-detail__add button, .cart-total button, #checkoutForm button, #RegisterForm button{
+.product-detail__add button,
+.cart-total button,
+#checkoutForm button,
+#RegisterForm button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
@@ -433,8 +436,7 @@ footer {
 }
 
 .alert span {
-  position: 
-  relative;
+  position: relative;
   top: 0px;
   left: 15px;
   background-color: transparent;
@@ -448,29 +450,26 @@ footer {
   margin: 5px;
   width: fit-content;
   border-radius: 5px;
-  position: relative
-  ;
-  
+  position: relative;
 }
 
 .Register-form {
- position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
   padding: 20px;
   gap: 25px;
   background-color: var(--dark-grey);
-   color: white;
-   border-radius: var(--border-radius);
+  color: white;
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-
 }
 
 #RegisterForm input {
   width: 100%;
   padding: 0.5em;
-  
+
   border-radius: 5px;
 }
 
@@ -480,15 +479,14 @@ footer {
 }
 
 .account {
-   margin-left: auto;       
-  margin-right: 3.5rem; 
+  margin-left: auto;
+  margin-right: 3.5rem;
   color: var(--secondary-color);
   font-weight: bold;
   display: block;
   position: relative;
   text-align: center;
   margin-top: 1em;
-
 }
 
 .account a {
@@ -504,20 +502,17 @@ footer {
   margin-top: 10px;
 }
 
-
-
 #RegisterSubmit:hover {
   background-color: var(--tertiary-color);
 }
 
 .checkout-form {
- max-width: 600px;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
   background: var(--light-grey);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
 }
 
 .checkout-form fieldset {
@@ -526,16 +521,18 @@ footer {
 
   margin-bottom: 1em;
 }
-.checkout__name, .checkout__address {
-
+.checkout__name,
+.checkout__address {
   height: auto;
 
   display: flex;
   flex-direction: column;
 }
 
-.checkout__name input, .checkout__address input, .checkout__payment input{
-    width: 100%;
+.checkout__name input,
+.checkout__address input,
+.checkout__payment input {
+  width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
