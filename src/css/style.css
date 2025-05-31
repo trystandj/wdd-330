@@ -478,7 +478,7 @@ footer {
   margin-bottom: 0.5em;
 }
 
-.account {
+.navigation {
   margin-left: auto;
   margin-right: 3.5rem;
   color: var(--secondary-color);
@@ -489,13 +489,20 @@ footer {
   margin-top: 1em;
 }
 
-.account a {
+.navigation a {
   text-decoration: none;
   color: var(--secondary-color);
 }
-.account a:hover {
+.navigation a:hover {
   color: var(--tertiary-color);
   text-decoration: none;
+}
+
+#breadcrumbs {
+  padding: 10px;
+  font-weight: bold;
+  font-size: .8rem;
+  color:rgb(82, 82, 82)
 }
 
 #RegisterForm button {

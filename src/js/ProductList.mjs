@@ -46,6 +46,11 @@ export default class ProductList {
     this.renderList(list);
   }
 
+  async returnData() {
+    const list = await this.dataSource.getData(this.category);
+    return list
+  }
+
   renderList(list) {
     // const htmlStrings = list.map(productCardTemplate);
     // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
