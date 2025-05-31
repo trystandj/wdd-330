@@ -14,23 +14,25 @@ const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);
 
-async function getNumberOfItems() {
-  const numOfProducts = await productList.returnData();
-  return numOfProducts.length
-};
-
-productList.init();
-
-const productData = {
-  pageType: "category",
-  category: category
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" "),
-  productCount: await getNumberOfItems(),
-};
+async function getNumberOfItems() {}
 
 (async function () {
-  await loadHeaderFooter();
-  updateBreadcrumb(productData);
+  const products = await productList.returnData();
+  const numOfProducts = products.length;
+
+  const productData = {
+    pageType: "category",
+    category: category
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" "),
+    productCount: numOfProducts,
+  };
+
+  (async function () {
+    await loadHeaderFooter();
+    updateBreadcrumb(productData);
+  })();
 })();
+
+productList.init();

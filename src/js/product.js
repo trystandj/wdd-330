@@ -7,25 +7,23 @@ const dataSource = new ExternalServices();
 const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 
-async function getProductCategory() {
-    const productInfo = await product.returnProductData();
-    const category = productInfo.Category;
-    return category
-}
+(async function () {
+  const productInfo = await product.returnProductData();
+  const productCategory = productInfo.Category;
 
-const productCategory = await getProductCategory()
+  const productData = {
+    pageType: "product",
+    category: productCategory
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" "),
+  };
+  (async function () {
+    await loadHeaderFooter();
+    updateBreadcrumb(productData);
+  })();
+})();
 
 product.init();
 
-const productData = {
-  pageType: "product",
-  category: productCategory
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" "),
-};
 
-(async function () {
-  await loadHeaderFooter();
-  updateBreadcrumb(productData);
-})();
