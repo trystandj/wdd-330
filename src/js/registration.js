@@ -2,7 +2,13 @@ import { loadHeaderFooter } from "./utils.mjs";
 import Registrationprocess from "./RegistrationProcess.mjs";
 import { updateBreadcrumb } from "./breadcrumb";
 
-await loadHeaderFooter();
+(async function () {
+  await loadHeaderFooter();
+  const pageData = {
+    pageType: "register",
+  };
+  updateBreadcrumb(pageData);
+})();
 
 document.addEventListener("DOMContentLoaded", () => {
   const registration = new Registrationprocess("so-cart", ".checkout-summary");
@@ -18,9 +24,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-const pageData = {
-  pageType: "register"
-}
-
-updateBreadcrumb(pageData)

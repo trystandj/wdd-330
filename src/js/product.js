@@ -3,13 +3,11 @@ import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import { updateBreadcrumb } from "./breadcrumb";
 
-await loadHeaderFooter();
-
 const dataSource = new ExternalServices();
 const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 const productInfo = await product.returnProductData();
-const category = productInfo.Category
+const category = productInfo.Category;
 product.init();
 
 const productData = {
@@ -20,4 +18,7 @@ const productData = {
     .join(" "),
 };
 
-updateBreadcrumb(productData);
+(async function () {
+  await loadHeaderFooter();
+  updateBreadcrumb(productData);
+})();

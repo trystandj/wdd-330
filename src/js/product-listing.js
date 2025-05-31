@@ -3,8 +3,6 @@ import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import { updateBreadcrumb } from "./breadcrumb";
 
-await loadHeaderFooter();
-
 const topElement = document.getElementById("title");
 const category = getParam("category");
 topElement.textContent += `: ${category
@@ -15,7 +13,7 @@ topElement.textContent += `: ${category
 const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);
-const numOfProducts = await productList.returnData()
+const numOfProducts = await productList.returnData();
 productList.init();
 
 const productData = {
@@ -27,4 +25,7 @@ const productData = {
   productCount: numOfProducts.length,
 };
 
-updateBreadcrumb(productData);
+(async function () {
+  await loadHeaderFooter();
+  updateBreadcrumb(productData);
+})();
