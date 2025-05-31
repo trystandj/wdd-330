@@ -25,7 +25,10 @@ export default class ProductDetails {
 
     }
 
-
+    async returnProductData() {
+        const product = await this.dataSource.findProductById(this.productId)
+        return product
+    }
 
     addProductToCart() {
         const cartItems = getLocalStorage("so-cart") || [];
