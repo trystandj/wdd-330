@@ -13,7 +13,12 @@ topElement.textContent += `: ${category
 const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);
-const numOfProducts = await productList.returnData();
+
+async function getNumberOfItems() {
+  const numOfProducts = await productList.returnData();
+  return numOfProducts.length
+};
+
 productList.init();
 
 const productData = {
@@ -22,7 +27,7 @@ const productData = {
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" "),
-  productCount: numOfProducts.length,
+  productCount: await getNumberOfItems(),
 };
 
 (async function () {
