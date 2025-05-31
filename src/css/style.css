@@ -509,3 +509,36 @@ footer {
 #RegisterSubmit:hover {
   background-color: var(--tertiary-color);
 }
+
+.checkout-form {
+ max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--light-grey);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+}
+
+.checkout-form fieldset {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 1em;
+}
+.checkout__name, .checkout__address {
+
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout__name input, .checkout__address input, .checkout__payment input{
+    width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
