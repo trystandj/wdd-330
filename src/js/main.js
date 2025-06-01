@@ -8,7 +8,7 @@ loadHeaderFooter();
 
 document.addEventListener("DOMContentLoaded", function() {
     if (localStorage.getItem("fstVisit") === null) {
-        alertMessage("¡Welcome, is your first Time here!. Go to register and win a gift");
+        alertMessage("¡Welcome, is your first Time here!. Go to <a href='register.html' style='color:white;'>register</a> and win a gift");
         localStorage.setItem("fstVisit", "true");
     } 
 });
