@@ -101,7 +101,7 @@ export async function loadHeaderFooter() {
 }
 
 
-export function alertMessage(message, scroll = true, duration = 3000) {
+export function alertMessage(message, scroll = true) { // , duration = 3000
   const alert = document.createElement("div");
   alert.classList.add("alert");
   alert.innerHTML = `<div><p>${message}<span>×</span></p></div>`;
