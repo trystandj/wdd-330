@@ -1,7 +1,16 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, alertMessage } from "./utils.mjs";
 // import Alert from "./alert.js";
 
 // const alert = new Alert();
 // alert.loadAlerts();
 
 loadHeaderFooter();
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (localStorage.getItem("fstVisit") === null) {
+        alertMessage("¡Welcome, is your first Time here!. Go to register and win a gift");
+        localStorage.setItem("fstVisit", "true");
+    } else {
+        console.log("Hello again!.");
+    }
+});
