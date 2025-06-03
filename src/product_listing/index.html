@@ -25,6 +25,16 @@
           <label id="sear-label">Search: </label>
           <input type="text" id="search" name="search">
         </div>
+        <label for="sort">Sort by:</label>
+        <select id="sort">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A to Z</option>
+          <option value="name-desc">Name: Z to A</option>
+          <option value="brand-asc">Brand: A to Z</option>
+          <option value="brand-desc">Brand: Z to A</option>
+        </select>
         </div>
         <ul id="product-list" class="product-list"></ul>
       </section>
