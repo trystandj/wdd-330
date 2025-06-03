@@ -100,21 +100,21 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footerTemplate, footerElement);
 }
 
-// export function alertMessage(message, scroll = true, duration = 3000) {
-//   const alert = document.createElement("div");
-//   alert.classList.add("alert");
-//   alert.innerHTML = `<div><p>${message}<span> × </span></p></div>`;
-//   alert.addEventListener("click", function (e)  {
-//     if (e.target.tagName == "SPAN") {
-//       main.removeChild(this);
-//     }
-//   });
-//   const main = document.querySelector("main");
-//   main.prepend(alert);
-//   if (scroll) {
-//     window.scrollTo(0, 0);
-//   }
-// }
+export function alertMessage(message, scroll = true, duration = 3000) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+  alert.innerHTML = `<div><p>${message}<span> × </span></p></div>`;
+  alert.addEventListener("click", function (e)  {
+    if (e.target.tagName == "SPAN") {
+      main.removeChild(this);
+    }
+  });
+  const main = document.querySelector("main");
+  main.prepend(alert);
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
 
 export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");

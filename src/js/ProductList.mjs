@@ -26,19 +26,21 @@ function productCardTemplate(product) {
   }
 
   return `
-    <li class="product-card">
-      <div class="discounted ${discountClass}">%${discount.toFixed(0)} Off</div>
-      <a href="/product_pages/?product=${product.Id}">
-        <img src="${imageSize}" alt="${product.Name}">
-        <h2>${product.Brand.Name}</h2>
-        <h3>${product.Name}</h3>
-        <div id="price-wrapper">
-          <p class="product-card__price" style="${strikeStyle}">$${product.FinalPrice.toFixed(2)}</p>
-          ${removeDiscount}
-        </div>
-      </a>
-    </li>
-  `;
+  <li class="product-card" 
+      data-name="${product.Name.toLowerCase()}" 
+      data-brand="${product.Brand.Name.toLowerCase()}">
+    <div class="discounted ${discountClass}">%${discount.toFixed(0)} Off</div>
+    <a href="/product_pages/?product=${product.Id}">
+      <img src="${imageSize}" alt="${product.Name}">
+      <h2>${product.Brand.Name}</h2>
+      <h3>${product.Name}</h3>
+      <div id="price-wrapper">
+        <p class="product-card__price" style="${strikeStyle}">$${product.FinalPrice.toFixed(2)}</p>
+        ${removeDiscount}
+      </div>
+    </a>
+  </li>
+`;
 }
 
 export default class ProductList {
