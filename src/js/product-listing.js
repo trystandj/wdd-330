@@ -9,7 +9,7 @@ topElement.textContent += `: ${category
   .split("-")
   .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
   .join(" ")}`;
-// console.log(category);
+
 const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);
@@ -32,7 +32,7 @@ const productList = new ProductList(category, dataSource, element);
         const brand = productCard.getAttribute("data-brand");
 
         const isMatch = searchWords.every(
-          (word) => name.includes(word) || brand.includes(word),
+          (word) => name.includes(word) || brand.includes(word)
         );
 
         productCard.style.display = isMatch ? "block" : "none";
@@ -58,12 +58,12 @@ const productList = new ProductList(category, dataSource, element);
           break;
         case "brand-asc":
           sortedProducts.sort((a, b) =>
-            a.Brand.Name.localeCompare(b.Brand.Name),
+            a.Brand.Name.localeCompare(b.Brand.Name)
           );
           break;
         case "brand-desc":
           sortedProducts.sort((a, b) =>
-            b.Brand.Name.localeCompare(a.Brand.Name),
+            b.Brand.Name.localeCompare(a.Brand.Name)
           );
           break;
         default:
@@ -71,7 +71,7 @@ const productList = new ProductList(category, dataSource, element);
           break;
       }
 
-      productList.renderList(products);
+      productList.renderList(sortedProducts);
     });
   });
 
