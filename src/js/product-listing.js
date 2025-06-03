@@ -14,11 +14,6 @@ const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);
 
-
-
-
-async function getNumberOfItems() {}
-
 (async function () {
   const products = await productList.returnData();
   const numOfProducts = products.length;
@@ -36,9 +31,9 @@ async function getNumberOfItems() {}
         const name = productCard.getAttribute("data-name");
         const brand = productCard.getAttribute("data-brand");
 
-        const isMatch = searchWords.every((word) => {
-          return name.includes(word) || brand.includes(word);
-        });
+        const isMatch = searchWords.every(
+          (word) => name.includes(word) || brand.includes(word),
+        );
 
         productCard.style.display = isMatch ? "block" : "none";
       });
@@ -46,29 +41,33 @@ async function getNumberOfItems() {}
 
     sortSelect.addEventListener("change", async (e) => {
       const sortBy = e.target.value;
-      let products = await productList.returnData();
+      let sortedProducts = await productList.returnData();
 
       switch (sortBy) {
         case "price-asc":
-          products.sort((a, b) => a.FinalPrice - b.FinalPrice);
+          sortedProducts.sort((a, b) => a.FinalPrice - b.FinalPrice);
           break;
         case "price-desc":
-          products.sort((a, b) => b.FinalPrice - a.FinalPrice);
+          sortedProducts.sort((a, b) => b.FinalPrice - a.FinalPrice);
           break;
         case "name-asc":
-          products.sort((a, b) => a.Name.localeCompare(b.Name));
+          sortedProducts.sort((a, b) => a.Name.localeCompare(b.Name));
           break;
         case "name-desc":
-          products.sort((a, b) => b.Name.localeCompare(a.Name));
+          sortedProducts.sort((a, b) => b.Name.localeCompare(a.Name));
           break;
         case "brand-asc":
-          products.sort((a, b) => a.Brand.Name.localeCompare(b.Brand.Name));
+          sortedProducts.sort((a, b) =>
+            a.Brand.Name.localeCompare(b.Brand.Name),
+          );
           break;
         case "brand-desc":
-          products.sort((a, b) => b.Brand.Name.localeCompare(a.Brand.Name));
+          sortedProducts.sort((a, b) =>
+            b.Brand.Name.localeCompare(a.Brand.Name),
+          );
           break;
         default:
-          products = await productList.returnData();
+          sortedProducts = await productList.returnData();
           break;
       }
 
