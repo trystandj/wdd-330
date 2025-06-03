@@ -287,11 +287,30 @@ button#remove-button:hover {
 
 /* Styles for product lists */
 .product-card {
+  position: relative;
   flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+}
+
+.product-card a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-card a img {
+  margin: auto auto;
+}
+
+.product-card a h3 {
+  margin-bottom: 60px;
+}
+#price-wrapper {
+  position: absolute;
+  bottom: 0px;
 }
 
 .product-card h2,
@@ -360,8 +379,8 @@ button#remove-button:hover {
 }
 
 .discounted {
-  position: relative;
-  right: -170px;
+  position: absolute;
+  right: 0px;
   height: 30px;
   width: 70px;
   background-color: var(--tertiary-color);
@@ -501,8 +520,8 @@ footer {
 #breadcrumbs {
   padding: 10px;
   font-weight: bold;
-  font-size: .8rem;
-  color:rgb(82, 82, 82)
+  font-size: 0.8rem;
+  color: rgb(82, 82, 82);
 }
 
 #RegisterForm button {
